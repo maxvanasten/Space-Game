@@ -548,6 +548,7 @@ function windowResized() {
 let bullets = [];
 
 function draw() {
+    push();
     cam.update();
     cam.timer++;
 
@@ -608,6 +609,7 @@ function draw() {
     radar.display(chunkLoader.getPlanets());
     ui.display();
     questHandler.loop();
+    pop();
 }
 
 function secondaryLoop() {
