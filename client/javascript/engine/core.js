@@ -74,7 +74,38 @@ class Core {
             turnSpeed: 0.1,
         };
 
-        this.planetNames = ["Unknown"];
+        this.planetNames = [
+            "Auron",
+            "Caldera",
+            "Meridia",
+            "Solara",
+            "Borealis",
+            "Vespera",
+            "Erythra",
+            "Lythos",
+            "Cendara",
+            "Orona",
+            "Selvara",
+            "Halcyon",
+            "Zephyra",
+            "Altara",
+            "Elara",
+            "Marineris",
+            "Dione",
+            "Thalassa",
+            "Pyralis",
+            "Meliora",
+            "Castora",
+            "Avandra",
+            "Serona",
+            "Lyonesse",
+            "Peridia",
+            "Tethys",
+            "Arcturus",
+            "Vesperis",
+            "Amara",
+            "Solis",
+        ];
 
         this.planets = [
             "Planet1",
@@ -130,9 +161,14 @@ class Core {
     }
 
     getPlanetName() {
-        return this.planetNames[
-            Math.floor(Math.random() * this.planetNames.length)
-        ];
+        const number = Math.floor(Math.random() * 1000);
+        const name =
+            this.planetNames[
+                Math.floor(Math.random() * this.planetNames.length)
+            ] +
+            "-" +
+            number;
+        return name;
     }
 
     getAngleBetweenVectors(vector1, vector2) {

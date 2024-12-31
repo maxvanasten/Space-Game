@@ -110,8 +110,9 @@ class Planet {
                     10,
                     true
                 );
+                b = new Banner(`${this.name} [${this.guild.name}]`, 10, true);
             } else {
-                b = new Banner(`${this.type.name}`, 10, true);
+                b = new Banner(`${this.name} [Fuel]`, 10, true);
             }
             ui.addElement(b);
         }
