@@ -34,19 +34,22 @@ class Planet {
             this.triggered = 0;
         }
         //check vessel
-        if (player.pos.dist(this.pos) <= this.triggerDistance) {
+        let v;
+        if (player.isVessel) {
+            v = vessel;
+        } else {
+            v = player;
+        }
+        if (v.pos.dist(this.pos) <= this.triggerDistance) {
             if (keyIsDown(32)) {
                 if (this.type.id == "gas_planet") {
                     //check for money
                     if (player.money >= core.gameOptions["fuelCost"]) {
                         //check for full tank
-                        if (player.fuel < player.maxFuel) {
-                            player.fuel += player.refuelSpeed;
-                            if (
-                                player.maxFuel - player.fuel <
-                                player.refuelSpeed
-                            ) {
-                                player.fuel = player.maxFuel; //IF REFUEL 0.5 fuel 999,7 fuel = 1000 != 1000,3
+                        if (v.fuel < v.maxFuel) {
+                            v.fuel += v.refuelSpeed;
+                            if (v.maxFuel - v.fuel < v.refuelSpeed) {
+                                v.fuel = v.maxFuel; //IF REFUEL 0.5 fuel 999,7 fuel = 1000 != 1000,3
                             }
                             player.money -= core.gameOptions["fuelCost"];
                         } else {
