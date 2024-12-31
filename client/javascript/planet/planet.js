@@ -108,11 +108,6 @@ class Planet {
         if (cursor.check(this.pos, this.r / 2)) {
             let b;
             if (this.guild) {
-                b = new Banner(
-                    `${this.type.name} (${this.guild.name})`,
-                    10,
-                    true
-                );
                 b = new Banner(`${this.name} [${this.guild.name}]`, 10, true);
             } else {
                 b = new Banner(`${this.name} [Fuel]`, 10, true);
