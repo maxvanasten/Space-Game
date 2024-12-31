@@ -1,9 +1,6 @@
 class Dashboard {
     constructor() {
         this.type = "dashboard";
-
-        this.color = core.uiOptions["mainColor"];
-        this.accentColor = core.uiOptions["accentColor"];
         this.active = true;
     }
 
