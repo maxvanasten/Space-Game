@@ -3,3 +3,4 @@
 .VSCodeCounter/results.csv
 .VSCodeCounter/results.txt
 .VSCodeCounter/results.md
+node_modules
