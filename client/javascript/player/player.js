@@ -17,6 +17,7 @@ class Player {
 
         this.maxSpeed = core.playerOptions["maxSpeed"];
         this.autoPilotSpeed = 0;
+        this.autoPilotSpeed = core.playerOptions["autoPilotSpeed"];
         this.friction = 0.95;
 
         this.boostSpeed = core.playerOptions["boostSpeed"];

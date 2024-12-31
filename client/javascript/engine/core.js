@@ -62,6 +62,7 @@ class Core {
             maxSpeed: 7.5,
             boostSpeed: 60,
             turnSpeed: 0.035,
+            autoPilotSpeed: 0,
             shootingAllowed: true,
             fuelUsage: 0.01,
             boostingFuelUsage: 0.1,
