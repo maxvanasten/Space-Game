@@ -133,11 +133,12 @@ function setup() {
 
     //add traders guild (MAX)
     let tg = new Guild("Traders Union");
+    const quest_giver_title = "Union Merchant";
     tg.addQuestGenerator(() => {
         //intro dialogue
         let d = new DialogueBox(
             "You",
-            "Trade Master",
+            quest_giver_title,
             textureHandler.getPlayer(),
             textureHandler.getAlien(5)
         );
@@ -186,7 +187,7 @@ function setup() {
                 //dialogue
                 let d = new DialogueBox(
                     "You",
-                    "Trade Master",
+                    quest_giver_title,
                     textureHandler.getPlayer(),
                     textureHandler.getAlien(5)
                 );
@@ -213,7 +214,7 @@ function setup() {
                         //dialoge
                         let d = new DialogueBox(
                             "You",
-                            "Trade Master",
+                            quest_giver_title,
                             textureHandler.getPlayer(),
                             textureHandler.getAlien(5)
                         );
