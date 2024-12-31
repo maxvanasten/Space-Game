@@ -4,9 +4,11 @@ class Dashboard {
 
         this.color = core.uiOptions["mainColor"];
         this.accentColor = core.uiOptions["accentColor"];
+        this.active = true;
     }
 
     display() {
+        // console.log("DISPLAYING DASHBOARD");
         push();
         stroke(
             core.uiOptions["accentColor"].r,
@@ -14,15 +16,30 @@ class Dashboard {
             core.uiOptions["accentColor"].b
         );
 
-        translate(
-            -cam.x + (width - width / 4),
-            -cam.y + width / 2 - width / 32
-        );
+        // const x = -cam.x + (width - width / 4);
+        // const y = -cam.y + width / 2 - width / 32;
+        let p_x,
+            p_y = 0;
+        if (player.isVessel) {
+            p_x = vessel.pos.x;
+            p_y = vessel.pos.y;
+        } else {
+            p_x = player.pos.x;
+            p_y = player.pos.y;
+        }
+        const x = p_x + width / 3 - width / 64;
+        const y = p_y + height / 4 - height / 16;
+        translate(x, y);
 
         //MAIN information
-        fill(this.color.r, this.color.g, this.color.b, this.color.a);
+        fill(
+            core.uiOptions["mainColor"].r,
+            core.uiOptions["mainColor"].g,
+            core.uiOptions["mainColor"].b,
+            core.uiOptions["mainColor"].a
+        );
 
-        rect(0, width / 64, width / 4, width / 16);
+        rect(0, width / 64, width / 6, height / 4);
 
         // textSize(width / 64);
         // fill(255);
@@ -34,7 +51,12 @@ class Dashboard {
         // }
         // text(v, 0, width / 48, width / 4, width / 8);
 
-        fill(this.color.r, this.color.g, this.color.b);
+        fill(
+            core.uiOptions["mainColor"].r,
+            core.uiOptions["mainColor"].g,
+            core.uiOptions["mainColor"].b,
+            core.uiOptions["mainColor"].a
+        );
         //Coordinates
         textAlign(LEFT);
         textSize(width / 64);
@@ -60,15 +82,25 @@ class Dashboard {
             "]" +
             ` (${core.options.chunks}X${core.options.chunks}, ${core.info.total_planets})`;
         text(motherShipCoords, width / 256, width / 32, width / 4, width / 8);
-        //Mothership fuel level
-        let fuel = "Fuel: " + player.fuel.toFixed(2) + "/" + player.maxFuel;
+        //fuel level
+        let fuel, velocity;
+        if (player.isVessel) {
+            fuel = "Fuel: " + vessel.fuel.toFixed(2) + "/" + vessel.maxFuel;
+            velocity = "Velocity: " + vessel.vel.mag().toFixed(2);
+        } else {
+            fuel = "Fuel: " + player.fuel.toFixed(2) + "/" + player.maxFuel;
+            velocity = "Velocity: " + player.vel.mag().toFixed(2);
+        }
         text(fuel, width / 256, width / 22, width / 4, width / 8);
         //Balance
         let balance = "FG$" + player.money.toFixed(2);
         text(balance, width / 256, width / 16, width / 4, width / 8);
+        let engine_boost = "Engine Boost: " + player.boosting;
+        text(engine_boost, width / 256, width / 12, width / 4, width / 8);
+        text(velocity, width / 256, width / 10, width / 8, width / 8);
 
         //quest log
-        // fill(this.color.r, this.color.g, this.color.b);
+        // fill(core.uiOptions["mainColor"].r, core.uiOptions["mainColor"].g, core.uiOptions["mainColor"].b);
         // rect(50, 220, 200, 100);
         let quest_name, quest_objective, quest_giver;
         if (player.quest.name) {
@@ -89,7 +121,19 @@ class Dashboard {
             );
             let quest_text = `"${quest_name}"\n${quest_objective}\n[${quest_giver}]`;
             textAlign(CENTER);
-            text(quest_text, 0, -width / 2 + width / 16, width / 4, width / 8);
+            text(
+                quest_text,
+                -width / 10,
+                -(height / 2 + height / 8),
+                width / 4,
+                height / 2
+            );
+            // rect(
+            //     -width / 10,
+            //     -(height / 2 + height / 8),
+            //     width / 4,
+            //     height / 2
+            // );
         }
 
         pop();
