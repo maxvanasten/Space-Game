@@ -5,12 +5,12 @@ class PlanetHandler {
             {
                 id: "gas_planet",
                 name: "Gas Planet",
-                probability: 10,
+                probability: 30,
             },
             {
                 id: "guild_planet",
                 name: "Guild Planet",
-                probability: 90,
+                probability: 70,
             },
         ];
     }
