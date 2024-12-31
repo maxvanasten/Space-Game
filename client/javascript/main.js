@@ -673,15 +673,15 @@ function keyPressed() {
         if (!player.isVessel) {
             //toggle boosting
             if (player.boosting) {
-                let u = new Banner("Disengaging Engine Boost");
-                u.lifespan = 200;
-                ui.addElement(u);
+                // let u = new Banner("Disengaging Engine Boost");
+                // u.lifespan = 200;
+                // ui.addElement(u);
                 player.boosting = false;
                 player.fuelUsage = core.playerOptions["fuelUsage"];
             } else {
-                let u = new Banner("Engaging Engine Boost");
-                u.lifespan = 200;
-                ui.addElement(u);
+                // let u = new Banner("Engaging Engine Boost");
+                // u.lifespan = 200;
+                // ui.addElement(u);
                 player.boosting = true;
                 player.fuelUsage = core.playerOptions["boostingFuelUsage"];
             }
