@@ -78,11 +78,10 @@ class UIHandler {
 
     display() {
         if (gameStarted) {
-            textAlign(CENTER);
+            // textAlign(CENTER);
             for (let i = this.elements.length - 1; i >= 0; i--) {
                 if (this.elements[i].type == "radar") {
                     this.elements[i].display();
-                    this.elements[i].upgrade();
                 }
             }
 
