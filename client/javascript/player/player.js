@@ -16,7 +16,6 @@ class Player {
         this.turnSpeed = core.playerOptions["turnSpeed"];
 
         this.maxSpeed = core.playerOptions["maxSpeed"];
-        this.autoPilotSpeed = 0;
         this.autoPilotSpeed = core.playerOptions["autoPilotSpeed"];
         this.friction = 0.95;
 
@@ -106,12 +105,13 @@ class Player {
         }
 
         //general physics
-        this.vel.add(this.acc);
         if (this.boosting) {
             this.vel.limit(this.boostSpeed);
         } else {
             this.vel.limit(this.maxSpeed);
         }
+        this.vel.add(this.acc);
+
         this.pos.add(this.vel);
         this.acc.mult(0);
         this.vel.mult(this.friction);
