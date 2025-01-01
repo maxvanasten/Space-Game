@@ -5,7 +5,8 @@ class Guild {
         this.questGenerator = null;
     }
 
-    addQuestGenerator(func) {
+    addQuestGenerator(func, min_rep) {
+        if (!min_rep) min_rep = 0;
         this.questGenerator = func;
     }
 
