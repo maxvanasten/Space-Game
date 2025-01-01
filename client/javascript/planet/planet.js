@@ -80,12 +80,12 @@ class Planet {
         }
         if (vessel.pos.dist(this.pos) <= this.triggerDistance) {
             if (keyIsDown(32)) {
-                console.log("PRESS");
+                //console.log("PRESS");
                 if (this.type.id == "guild_planet") {
-                    console.log(`Guild planet: ${this.guild.name}`);
+                    //console.log(`Guild planet: ${this.guild.name}`);
                     if (!this.triggered) {
                         this.triggered = 1;
-                        console.log(`TRIGGERING`);
+                        //console.log(`TRIGGERING`);
                         this.guild.getQuest(player);
                         player.questData["planet"] = this;
                     }

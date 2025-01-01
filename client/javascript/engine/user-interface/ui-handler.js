@@ -21,7 +21,7 @@ class UIHandler {
 
     addElement(uiElement) {
         if (this.elements.length > this.maxElements) {
-            console.log("MAX ELEMENTS REACHED");
+            //console.log("MAX ELEMENTS REACHED");
             this.elements.splice(this.elements.length - 1, 1);
         }
 

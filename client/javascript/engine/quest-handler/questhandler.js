@@ -62,9 +62,9 @@ class QuestHandler {
     }
 
     setQuest(quest) {
-        console.log(`In tutorial: ${player.inTutorial}`);
+        //console.log(`In tutorial: ${player.inTutorial}`);
         if (!player.inTutorial) {
-            console.log("Setting quest");
+            //console.log("Setting quest");
             this.quest = quest;
             player.quest = quest;
         }

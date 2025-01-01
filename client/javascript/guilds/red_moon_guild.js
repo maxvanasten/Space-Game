@@ -122,7 +122,7 @@ const red_moon_guild = () => {
             });
             questHandler.setQuest(quest);
         });
-        console.log(`Quest generated: ${d}`);
+        //console.log(`Quest generated: ${d}`);
 
         ui.addElement(d);
     });

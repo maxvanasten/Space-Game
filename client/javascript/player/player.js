@@ -82,8 +82,8 @@ class Player {
             }
         });
         if (!duplicate) this.last_visited.push(visited_obj);
-            
-        console.log(`Added ${visited_obj.name} to last visited, amount: ${this.last_visited.length}`);
+
+        //console.log(`Added ${visited_obj.name} to last visited, amount: ${this.last_visited.length}`);
     }
 
     update() {
