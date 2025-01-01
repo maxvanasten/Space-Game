@@ -6,7 +6,7 @@ const horizon_alliance_beginner = (player) => {
     let material_amount = Math.floor(Math.random() * 100) + 50;
 
     // Quest rewards
-    let money_reward = 100 + player.getGuildRep("traders_union") * 10;
+    let money_reward = 100 + player.getGuildRep("horizon_alliance") * 10;
     let rep_reward = Math.floor(Math.random() * 10) + 5;
 
     //intro dialogue
@@ -108,7 +108,7 @@ const horizon_alliance_beginner = (player) => {
                     );
                     d.addOnFinished(() => {
                         player.money += money_reward;
-                        player.addGuildRep("traders_union", rep_reward);
+                        player.addGuildRep("horizon_alliance", rep_reward);
                         // let u = new UIAlert(
                         //     "Money Received",
                         //     "You've received 100 " +
