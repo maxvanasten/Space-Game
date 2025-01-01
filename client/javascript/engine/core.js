@@ -106,6 +106,16 @@ class Core {
             "Amara",
             "Solis",
         ];
+        this.materialNames = [
+            "Titanium Alloy",
+            "Crysolium",
+            "Neutronium Dust",
+            "Erythium",
+            "Quantum Fibers",
+            "Solarite",
+            "Lunarite",
+            "Plutonium",
+        ];
 
         this.planets = [
             "Planet1",
@@ -169,6 +179,12 @@ class Core {
             "-" +
             number;
         return name;
+    }
+
+    getMaterialName() {
+        return this.materialNames[
+            Math.floor(Math.random() * this.materialNames.length)
+        ];
     }
 
     getAngleBetweenVectors(vector1, vector2) {
