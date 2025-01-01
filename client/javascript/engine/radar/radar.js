@@ -32,6 +32,7 @@ class Radar {
     }
 
     drawPoint(vector, type) {
+        // console.log(`Drawing point at ${vector} with type ${type}`);
         push();
         if (!type) type = "default";
 
@@ -40,19 +41,19 @@ class Radar {
         switch (type) {
             case "objective":
                 color = core.radarColors.objective;
-                radius = 10;
+                radius = 15;
                 break;
             case "planet":
                 color = core.radarColors.planet;
-                radius = 20;
+                radius = 30;
                 break;
             case "vessel":
                 color = core.radarColors.vessel;
-                radius = 50;
+                radius = 15;
                 break;
             case "mothership":
                 color = core.radarColors.mothership;
-                radius = 75;
+                radius = 20;
                 break;
             default:
                 color = {
@@ -61,11 +62,12 @@ class Radar {
                     b: 255,
                     a: 200,
                 };
+                radius = 10;
         }
 
-        translate(-cam.x + (width / 2 - this.width / 2), -cam.y + 15);
+        // translate(-cam.x + (width / 2 - this.width / 2), -cam.y + 15);
         fill(color.r, color.g, color.b, color.a);
-        ellipse(vector.x, vector.y, 10);
+        ellipse(vector.x, vector.y, radius);
         pop();
     }
 
@@ -132,26 +134,9 @@ class Radar {
                 line(gx, 0, gx, this.height);
             }
 
-            //draw pos's
-            fill(
-                core.uiOptions.mainColor.r,
-                core.uiOptions.mainColor.g,
-                core.uiOptions.mainColor.b,
-                core.uiOptions.mainColor.a
-            );
-            stroke(
-                core.uiOptions.accentColor.r,
-                core.uiOptions.accentColor.g,
-                core.uiOptions.accentColor.b,
-                core.uiOptions.accentColor.a
-            );
-            // strokeWeight(4);
-            // rect(0, 0, this.width, this.height);
-            strokeWeight(0);
-            fill(0, 255, 0, 120);
-            ellipse(this.m.x, this.m.y, 20);
-            fill(0, 255, 0, 180);
-            ellipse(this.v.x, this.v.y, 10);
+            // console.log(`Drawing mothership at ${this.getVector(player.pos)}`);
+            this.drawPoint(this.getVector(player.pos), "mothership");
+            this.drawPoint(this.getVector(vessel.pos), "vessel");
 
             strokeWeight(1);
             stroke(
