@@ -177,7 +177,6 @@ function setup() {
         let u = new Banner("Teleported to mothership!");
         ui.addElement(u);
     });
-    itemContainer.addItem(item);
 
     let itemstack = new ItemStack(item, 5);
 
