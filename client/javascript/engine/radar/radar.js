@@ -93,7 +93,6 @@ class Radar {
         pop();
     }
 
-    display(planets) {
     display() {
         if (this.active) {
             // console.log(`radar.quest = ${this.quest}`);
