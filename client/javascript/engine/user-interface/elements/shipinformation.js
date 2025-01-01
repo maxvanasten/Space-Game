@@ -56,7 +56,7 @@ class ShipInformation {
             // Guild reputation
             let gr_text = `Guild Reputations:\n`;
             player.guild_reputation.forEach((guild_rep) => {
-                gr_text += `${guild_rep.name}: ${guild_rep.reputation}\n`;
+                gr_text += `${guild_rep.name}: ${guild_rep.reputation}/100\n`;
             });
 
             final_text += `\n\n${gr_text}`;

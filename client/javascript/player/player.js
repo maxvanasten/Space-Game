@@ -169,6 +169,9 @@ class Player {
         this.guild_reputation.forEach((guild_rep) => {
             if (guild_rep.identifier == guild_identifier) {
                 guild_rep.reputation += amount;
+                if (guild_rep.reputation > 100) {
+                    guild_rep.reputation = 100;
+                }
             }
         });
     }
