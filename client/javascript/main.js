@@ -51,8 +51,8 @@ function loadUI() {
     let inventoryui = new InventoryUI();
     ui.addElement(inventoryui);
 
-    let playerInfo = new PlayerInfo();
-    ui.addElement(playerInfo);
+    // let playerInfo = new PlayerInfo();
+    // ui.addElement(playerInfo);
 }
 
 function setup() {
@@ -502,14 +502,14 @@ function keyPressed() {
         }
     }
 
-    if (keyCode == "80") {
-        // P
-        if (ui.getPlayerInfo().active) {
-            ui.getPlayerInfo().active = false;
-        } else {
-            ui.getPlayerInfo().active = true;
-        }
-    }
+    // if (keyCode == "80") {
+    //     // P
+    //     if (ui.getPlayerInfo().active) {
+    //         ui.getPlayerInfo().active = false;
+    //     } else {
+    //         ui.getPlayerInfo().active = true;
+    //     }
+    // }
 
     if (keyCode == "79") {
         // O
