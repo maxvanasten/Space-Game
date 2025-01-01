@@ -47,24 +47,19 @@ class ShipInformation {
             textSize(24);
             textAlign(CENTER);
             fill(230, 230, 230, core.uiOptions.textColor.a);
-            let quest_name, quest_objective, quest_giver;
-            if (player.quest.name) {
-                quest_name = player.quest.name;
-                quest_objective = player.quest.objective.task;
-                if (player.quest.amount > 0) {
-                    quest_objective +=
-                        " (" + player.quest.objective.current + ")";
-                }
-            }
-            let quest_text = `${quest_name}\n${quest_objective}\n${quest_giver}`;
             let final_text = `Balance: FG$${player.money.toFixed(
                 2
             )}\nExpedition Fuel: ${vessel.fuel.toFixed(
                 2
             )}/${vessel.maxFuel.toFixed(2)}\nEngine Boost: ${player.boosting}`;
-            if (player.quest.name != "No Quest") {
-                final_text += `\n\n${quest_text}`;
-            }
+
+            // Guild reputation
+            let gr_text = `Guild Reputations:\n`;
+            player.guild_reputation.forEach((guild_rep) => {
+                gr_text += `${guild_rep.name}: ${guild_rep.reputation}\n`;
+            });
+
+            final_text += `\n\n${gr_text}`;
 
             text(final_text, 0, width / 24, this.width, this.height - 50);
 
