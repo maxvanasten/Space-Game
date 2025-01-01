@@ -1,7 +1,17 @@
 const traders_union = () => {
-    let tg = new Guild("traders_union", "Traders Union");
-    const quest_giver_title = "Union Merchant";
+    let tg = new Guild("traders_union", "Horizon Alliance");
+    const quest_giver_title = "Trade Envoy";
     tg.addQuestGenerator((player) => {
+        let planet1 = chunkLoader.getPlanet();
+        let planet2 = chunkLoader.getPlanet();
+
+        let material_name = core.getMaterialName();
+        let material_amount = Math.floor(Math.random() * 100) + 50;
+
+        // Quest rewards
+        let money_reward = Math.floor(Math.random() * 300) + 150;
+        let rep_reward = Math.floor(Math.random() * 10) + 5;
+
         //intro dialogue
         let d = new DialogueBox(
             "You",
@@ -12,45 +22,48 @@ const traders_union = () => {
         d.addLine(
             new VoiceLine(
                 "right",
-                "You've accepted a trade mission!",
+                "I have a request for you from the Horizon Alliance.",
                 core.options["defaultDialogueDelay"]
             )
         );
         d.addLine(
             new VoiceLine(
                 "right",
-                "You will travel to a planet where you will pickup some materials.",
-                core.options["defaultDialogueDelay"]
+                `They want you to head to ${planet1.name} to pick up a shipment: ${material_amount} units of ${material_name}.`,
+                core.options["defaultDialogueDelay"] * 2
             )
         );
         d.addLine(
             new VoiceLine(
                 "right",
-                "You will then deliver these materials to a different planet",
-                core.options["defaultDialogueDelay"]
+                `You will then deliver these materials to ${planet2.name}. In exchange, we will give you a reward of ${money_reward} ${core.buildOptions["currencyName"]}.`,
+                core.options["defaultDialogueDelay"] * 2.5
             )
         );
         d.addLine(
             new VoiceLine(
                 "right",
-                "Good luck!",
+                `Your reputation with us will also increase by ${rep_reward}, Good luck.`,
                 core.options["defaultDialogueDelay"]
             )
         );
 
         //add quest when dialogue ends
         d.addOnFinished(() => {
-            let planet1 = chunkLoader.getPlanet();
             //travel to planet 1
             let ob = new Objective(1, "Travel to " + planet1.name);
-            ob.addDesc("Pick up the resources from the first planet.");
+            ob.addDesc(`Pick up the ${material_name} from ${planet1.name}.`);
             let quest = new LocationQuest(
                 "Pickup",
-                "Traders Union",
+                "Horizon Alliance",
                 ob,
                 planet1.pos
             );
             quest.addOnFinished(() => {
+                // Add materials to inventory
+                let item = new Item("quest_item", material_name);
+                let itemstack = new ItemStack(item, material_amount);
+                player.inventory.addItemStack(itemstack);
                 //dialogue
                 let d = new DialogueBox(
                     "You",
@@ -67,17 +80,23 @@ const traders_union = () => {
                 );
 
                 d.addOnFinished(() => {
-                    let planet2 = chunkLoader.getPlanet();
                     //travel to planet 2
                     let ob = new Objective(1, "Travel to " + planet2.name);
-                    ob.addDesc("Deliver the resources to the second planet.");
+                    ob.addDesc(
+                        `Deliver the ${material_name} to ${planet2.name}.`
+                    );
                     let quest = new LocationQuest(
-                        "Trade Mission: Part Two",
-                        "Traders Union",
+                        "Delivery",
+                        "Horizon Alliance",
                         ob,
                         planet2.pos
                     );
                     quest.addOnFinished(() => {
+                        // Remove items from inventory
+                        player.inventory.removeFromItemStack(
+                            item.id,
+                            material_amount
+                        );
                         //dialoge
                         let d = new DialogueBox(
                             "You",
@@ -93,14 +112,14 @@ const traders_union = () => {
                             )
                         );
                         d.addOnFinished(() => {
-                            player.money += 100;
-                            player.addGuildRep("traders_union", 50);
-                            let u = new UIAlert(
-                                "Money Received",
-                                "You've received 100 " +
-                                    core.buildOptions["currencyName"]
-                            );
-                            ui.addElement(u);
+                            player.money += money_reward;
+                            player.addGuildRep("traders_union", rep_reward);
+                            // let u = new UIAlert(
+                            //     "Money Received",
+                            //     "You've received 100 " +
+                            //         core.buildOptions["currencyName"]
+                            // );
+                            // ui.addElement(u);
                         });
                         ui.addElement(d);
                     });
@@ -110,7 +129,6 @@ const traders_union = () => {
             });
             questHandler.setQuest(quest);
         });
-        console.log(`Quest generated: ${d}`);
         ui.addElement(d);
     });
     return tg;
