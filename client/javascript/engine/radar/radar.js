@@ -6,6 +6,7 @@ class Radar {
         this.type == "radar";
         this.active = true;
 
+        this.quest = false;
         this.gw =
             this.width / (chunkLoader.totalWidth / chunkLoader.chunkWidth);
         this.gh =
@@ -93,7 +94,9 @@ class Radar {
     }
 
     display(planets) {
+    display() {
         if (this.active) {
+            // console.log(`radar.quest = ${this.quest}`);
             push();
             translate(
                 -cam.x + (width / 2 - this.width / 2),
@@ -138,6 +141,13 @@ class Radar {
             this.drawPoint(this.getVector(player.pos), "mothership");
             this.drawPoint(this.getVector(vessel.pos), "vessel");
 
+            if (this.quest != false) {
+                // console.log(`Drawing quest location = ${this.quest.location}`);
+                this.drawPoint(
+                    this.getVector(this.quest.location),
+                    "objective"
+                );
+            }
             strokeWeight(1);
             stroke(
                 core.uiOptions.textColor.r,
