@@ -144,12 +144,16 @@ class Radar {
                 this.drawPoint(this.getVector(point), point.type);
             });
 
-            if (this.quest != false) {
-                // console.log(`Drawing quest location = ${this.quest.location}`);
-                this.drawPoint(
-                    this.getVector(this.quest.location),
-                    "objective"
-                );
+            if (player.quest) {
+                if (player.quest.location) {
+                    //console.log("player.quest.location = " + player.quest.location);
+                    //console.log(`Drawing quest location = ${player.quest.location}`);
+                    //console.log(`quest: ${player.quest}`);
+                    this.drawPoint(
+                        this.getVector(player.quest.location),
+                        "objective"
+                    );
+                }
             }
             strokeWeight(1);
             stroke(
