@@ -17,6 +17,7 @@ class Cam {
     }
 
     update() {
+        if (!player) return;
         if (this.playerFocussed) {
             if (player.isVessel) {
                 this.dZoom = 2;
