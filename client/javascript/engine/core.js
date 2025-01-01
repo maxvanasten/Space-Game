@@ -60,10 +60,10 @@ class Core {
 
         this.radarColors = {
             objective: {
-                r: 255,
-                g: 50,
-                b: 50,
-                a: 200,
+                r: 30,
+                g: 255,
+                b: 30,
+                a: 180,
             },
             vessel: {
                 r: 50,
@@ -72,10 +72,10 @@ class Core {
                 a: 150,
             },
             planet: {
-                r: 50,
+                r: 80,
                 g: 255,
-                b: 50,
-                a: 200,
+                b: 80,
+                a: 120,
             },
             mothership: {
                 r: 255,
