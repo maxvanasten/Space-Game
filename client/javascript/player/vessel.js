@@ -179,8 +179,8 @@ class Vessel {
         translate(this.pos.x, this.pos.y);
         rotate(this.angle);
         imageMode(CENTER);
-        image(this.texture, 0, 0, (this.w * (2)), (this.h * (1)));
-        
+        image(this.texture, 0, 0, this.w * 2, this.h * 1);
+
         //turret
         // let correctedPos = createVector(this.pos.x + cam.x, this.pos.y + cam.y);
         // let a = core.getAngleBetweenVectors(cursor.pos, correctedPos);
@@ -205,7 +205,7 @@ class Vessel {
         //     this.particles[i].display();
         // }
 
-        if (core.options['debug']) {
+        if (core.options["debug"]) {
             fill(255, 0, 0, 50);
             ellipse(0, 0, this.hitbox * 2);
         }
