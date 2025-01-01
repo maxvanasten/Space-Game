@@ -132,7 +132,7 @@ function setup() {
     ); //init class
 
     // Add guilds to chunkloader
-    chunkLoader.guilds.push(traders_union());
+    chunkLoader.guilds.push(horizon_alliance());
     chunkLoader.guilds.push(red_moon_guild());
 
     chunkLoader.generate(); //generate chunks
