@@ -58,6 +58,33 @@ class Core {
             amount: 7,
         };
 
+        this.radarColors = {
+            objective: {
+                r: 255,
+                g: 50,
+                b: 50,
+                a: 200,
+            },
+            vessel: {
+                r: 50,
+                g: 50,
+                b: 255,
+                a: 150,
+            },
+            planet: {
+                r: 50,
+                g: 255,
+                b: 50,
+                a: 200,
+            },
+            mothership: {
+                r: 255,
+                g: 255,
+                b: 50,
+                a: 120,
+            },
+        };
+
         this.playerOptions = {
             maxSpeed: 7.5,
             boostSpeed: 60,

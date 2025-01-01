@@ -31,10 +31,40 @@ class Radar {
         );
     }
 
-    drawPoint(vector) {
+    drawPoint(vector, type) {
         push();
+        if (!type) type = "default";
+
+        let radius;
+        let color;
+        switch (type) {
+            case "objective":
+                color = core.radarColors.objective;
+                radius = 10;
+                break;
+            case "planet":
+                color = core.radarColors.planet;
+                radius = 20;
+                break;
+            case "vessel":
+                color = core.radarColors.vessel;
+                radius = 50;
+                break;
+            case "mothership":
+                color = core.radarColors.mothership;
+                radius = 75;
+                break;
+            default:
+                color = {
+                    r: 255,
+                    g: 255,
+                    b: 255,
+                    a: 200,
+                };
+        }
+
         translate(-cam.x + (width / 2 - this.width / 2), -cam.y + 15);
-        fill(255);
+        fill(color.r, color.g, color.b, color.a);
         ellipse(vector.x, vector.y, 10);
         pop();
     }

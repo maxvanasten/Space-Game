@@ -48,7 +48,10 @@ class QuestHandler {
 
         if (this.quest.type == "location" && this.quest.active) {
             if (radar.active) {
-                radar.drawPoint(radar.getVector(this.quest.location));
+                radar.drawPoint(
+                    radar.getVector(this.quest.location),
+                    "objective"
+                );
             }
             push();
             translate(this.quest.location.x, this.quest.location.y);
