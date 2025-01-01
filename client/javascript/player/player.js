@@ -175,4 +175,14 @@ class Player {
             }
         });
     }
+
+    getGuildRep(guild_identifier) {
+        let rep = 0;
+        this.guild_reputation.forEach((guild_rep) => {
+            if (guild_rep.identifier == guild_identifier) {
+                rep = guild_rep.reputation;
+            }
+        });
+        return rep;
+    }
 }

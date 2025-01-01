@@ -9,7 +9,7 @@ const traders_union = () => {
         let material_amount = Math.floor(Math.random() * 100) + 50;
 
         // Quest rewards
-        let money_reward = Math.floor(Math.random() * 300) + 150;
+        let money_reward = 100 + player.getGuildRep("traders_union") * 10;
         let rep_reward = Math.floor(Math.random() * 10) + 5;
 
         //intro dialogue
