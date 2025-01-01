@@ -7,6 +7,8 @@ class Player {
 
         this.guild_reputation = [];
 
+        this.last_visited = [];
+
         this.pos = createVector(x, y);
         this.acc = createVector(0, 0);
         this.vel = createVector(0, 0);
@@ -60,6 +62,28 @@ class Player {
     applyForce(vector) {
         let f = vector.div(this.mass);
         this.acc.add(f);
+    }
+
+    //visited_obj = {
+        // x:0,
+        // y:0,
+        // name:"Planet-493",
+        // type: "planet"
+    // }
+    addVisited(visited_obj) {
+        if (this.last_visited.length > 100) {
+            this.last_visited.shift();
+        }
+        // check name
+        let duplicate = false;
+        this.last_visited.forEach((visit) => {
+            if (visit.name == visited_obj.name) {
+                duplicate = true;
+            }
+        });
+        if (!duplicate) this.last_visited.push(visited_obj);
+            
+        console.log(`Added ${visited_obj.name} to last visited, amount: ${this.last_visited.length}`);
     }
 
     update() {

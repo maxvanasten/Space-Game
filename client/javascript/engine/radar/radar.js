@@ -46,7 +46,7 @@ class Radar {
                 break;
             case "planet":
                 color = core.radarColors.planet;
-                radius = 30;
+                radius = 15;
                 break;
             case "vessel":
                 color = core.radarColors.vessel;
@@ -139,6 +139,10 @@ class Radar {
             // console.log(`Drawing mothership at ${this.getVector(player.pos)}`);
             this.drawPoint(this.getVector(player.pos), "mothership");
             this.drawPoint(this.getVector(vessel.pos), "vessel");
+
+            player.last_visited.forEach((point) => {
+                this.drawPoint(this.getVector(point), point.type);
+            });
 
             if (this.quest != false) {
                 // console.log(`Drawing quest location = ${this.quest.location}`);
