@@ -1,6 +1,7 @@
 class Guild {
     constructor(name) {
         this.name = name;
+        this.questGenerator = null;
     }
 
     addQuestGenerator(func) {
