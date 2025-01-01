@@ -148,6 +148,15 @@ function setup() {
     player = new Player(randomPoint.x, randomPoint.y);
     vessel = new Vessel(player.pos.x, player.pos.y);
 
+    // Add guild reputations to player
+    chunkLoader.guilds.forEach((guild) => {
+        player.guild_reputation.push({
+            identifier: guild.identifier,
+            name: guild.name,
+            reputation: 0,
+        });
+    });
+
     // add enemy
     // let ePos = chunkLoader.chunks[randomChunk].getRandomPoint();
     // let e = new Enemy(ePos.x, ePos.y);

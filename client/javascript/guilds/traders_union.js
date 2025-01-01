@@ -1,7 +1,7 @@
 const traders_union = () => {
-    let tg = new Guild("Traders Union");
+    let tg = new Guild("traders_union", "Traders Union");
     const quest_giver_title = "Union Merchant";
-    tg.addQuestGenerator(() => {
+    tg.addQuestGenerator((player) => {
         //intro dialogue
         let d = new DialogueBox(
             "You",
@@ -45,7 +45,7 @@ const traders_union = () => {
             let ob = new Objective(1, "Travel to " + planet1.name);
             ob.addDesc("Pick up the resources from the first planet.");
             let quest = new LocationQuest(
-                "Trade Mission: Part One",
+                "Pickup",
                 "Traders Union",
                 ob,
                 planet1.pos
@@ -94,6 +94,7 @@ const traders_union = () => {
                         );
                         d.addOnFinished(() => {
                             player.money += 100;
+                            player.addGuildRep("traders_union", 50);
                             let u = new UIAlert(
                                 "Money Received",
                                 "You've received 100 " +

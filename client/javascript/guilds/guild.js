@@ -1,5 +1,6 @@
 class Guild {
-    constructor(name) {
+    constructor(identifier, name) {
+        this.identifier = identifier;
         this.name = name;
         this.questGenerator = null;
     }
@@ -8,7 +9,7 @@ class Guild {
         this.questGenerator = func;
     }
 
-    getQuest() {
-        this.questGenerator();
+    getQuest(player) {
+        this.questGenerator(player);
     }
 }

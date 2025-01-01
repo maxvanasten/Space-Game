@@ -1,6 +1,6 @@
 const red_moon_guild = () => {
     //Red moon's guild (TIMO)
-    let rmg = new Guild("Red Moon");
+    let rmg = new Guild("red_moon_guild", "Red Moon");
     rmg.addQuestGenerator(() => {
         let d = new DialogueBox(
             player.name,
@@ -107,6 +107,8 @@ const red_moon_guild = () => {
                     );
                     d.addOnFinished(() => {
                         player.money += 100;
+                        player.addGuildRep("red_moon_guild", 50);
+
                         let u = new UIAlert(
                             "Money Received",
                             "You've received 100 " +

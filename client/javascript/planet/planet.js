@@ -79,7 +79,7 @@ class Planet {
                     if (!this.triggered) {
                         this.triggered = 1;
                         console.log(`TRIGGERING`);
-                        this.guild.getQuest();
+                        this.guild.getQuest(player);
                         player.questData["planet"] = this;
                     }
                 }

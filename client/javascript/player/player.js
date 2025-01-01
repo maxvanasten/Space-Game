@@ -5,7 +5,7 @@ class Player {
 
         this.name = "Player";
 
-        this.guild = new Guild("No Guild");
+        this.guild_reputation = [];
 
         this.pos = createVector(x, y);
         this.acc = createVector(0, 0);
@@ -163,5 +163,13 @@ class Player {
         }
 
         pop();
+    }
+
+    addGuildRep(guild_identifier, amount) {
+        this.guild_reputation.forEach((guild_rep) => {
+            if (guild_rep.identifier == guild_identifier) {
+                guild_rep.reputation += amount;
+            }
+        });
     }
 }
