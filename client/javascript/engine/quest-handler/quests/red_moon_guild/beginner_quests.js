@@ -103,13 +103,6 @@ const red_moon_beginner = (player) => {
                 d.addOnFinished(() => {
                     player.money += 100;
                     player.addGuildRep("red_moon_guild", 50);
-
-                    let u = new UIAlert(
-                        "Money Received",
-                        "You've received 100 " +
-                            core.buildOptions["currencyName"]
-                    );
-                    ui.addElement(u);
                     player.quest = false;
                 });
                 ui.addElement(d);
