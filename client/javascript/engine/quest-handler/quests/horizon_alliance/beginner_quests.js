@@ -27,7 +27,7 @@ const horizon_alliance_beginner = (player) => {
         new VoiceLine(
             "right",
             `They want you to head to ${planet1.name} to pick up a shipment: ${material_amount} units of ${material_name}.`,
-            core.options["defaultDialogueDelay"] * 2
+            core.options["defaultDialogueDelay"] * 2.5
         )
     );
     d.addLine(
@@ -40,7 +40,7 @@ const horizon_alliance_beginner = (player) => {
     d.addLine(
         new VoiceLine(
             "right",
-            `Your reputation with us will also increase by ${rep_reward}, Good luck.`,
+            `Completing this request for the alliance will increase your reputation by ${rep_reward}, Good luck.`,
             core.options["defaultDialogueDelay"]
         )
     );
