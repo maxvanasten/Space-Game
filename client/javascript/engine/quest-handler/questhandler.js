@@ -23,10 +23,6 @@ class QuestHandler {
         console.error("Couldn't find quest '" + name + "'");
     }
 
-    addQuest(quest) {
-        this.quest = quest;
-    }
-
     update() {
         if (core.options["debug"]) {
             // console.log(this.quests[i]);
