@@ -110,6 +110,7 @@ const red_moon_beginner = (player) => {
                             core.buildOptions["currencyName"]
                     );
                     ui.addElement(u);
+                    player.quest = false;
                 });
                 ui.addElement(d);
             });

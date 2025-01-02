@@ -99,17 +99,18 @@ class Dashboard {
         //quest log
         // fill(core.uiOptions["mainColor"].r, core.uiOptions["mainColor"].g, core.uiOptions["mainColor"].b);
         // rect(50, 220, 200, 100);
-        let quest_name, quest_objective, quest_giver;
-        if (player.quest.name) {
-            quest_name = player.quest.name;
-            quest_objective = player.quest.objective.task;
-            quest_giver = player.quest.giver;
-            if (player.quest.amount > 0) {
-                quest_objective += " (" + player.quest.objective.current + ")";
+        if (player.quest) {
+            let quest_name, quest_objective, quest_giver;
+            if (player.quest.name) {
+                quest_name = player.quest.name;
+                quest_objective = player.quest.objective.task;
+                quest_giver = player.quest.giver;
+                if (player.quest.amount > 0) {
+                    quest_objective +=
+                        " (" + player.quest.objective.current + ")";
+                }
             }
-        }
 
-        if (quest_name != "No Quest") {
             fill(
                 core.uiOptions.textColor.r,
                 core.uiOptions.textColor.g,

@@ -109,6 +109,7 @@ const horizon_alliance_beginner = (player) => {
                     d.addOnFinished(() => {
                         player.money += money_reward;
                         player.addGuildRep("horizon_alliance", rep_reward);
+                        player.quest = false;
                         // let u = new UIAlert(
                         //     "Money Received",
                         //     "You've received 100 " +

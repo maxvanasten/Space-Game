@@ -49,8 +49,7 @@ class Player {
 
         this.inTutorial = core.options["tutorial"];
 
-        // this.quest = new PlaceHolderQuest("No quest", new Objective(1, "No quest available."), "No quest available.");
-        this.quest = new PlaceHolderQuest("", new Objective(0, ""), "");
+        this.quest = false;
         this.questData = {};
     }
 

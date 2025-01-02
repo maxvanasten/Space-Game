@@ -1,10 +1,6 @@
 class QuestHandler {
     constructor() {
-        let nq = new PlaceHolderQuest(
-            "No Quest",
-            "You currently don't have a quest."
-        );
-        this.quest = nq;
+        this.quest = false;
     }
 
     loop() {
@@ -14,46 +10,43 @@ class QuestHandler {
 
     trigger(name) {
         //find quest
-        if (this.quest.name == name) {
-            //found quest
-            this.quest.trigger();
-            return true;
-        }
+        if (this.quest) {
+            if (this.quest.name == name) {
+                //found quest
+                this.quest.trigger();
+                return true;
+            }
 
-        console.error("Couldn't find quest '" + name + "'");
+            console.error("Couldn't find quest '" + name + "'");
+        }
     }
 
     update() {
-        if (core.options["debug"]) {
-            // console.log(this.quests[i]);
-        }
+        if (this.quest) {
+            this.quest.update();
+            player.quest = this.quest;
 
-        this.quest.update();
-        player.quest = this.quest;
-
-        if (this.quest.complete) {
-            this.quest.active = false;
-            // this.quests.splice(i, 1);
-            let nq = new PlaceHolderQuest(
-                "No Quest",
-                "You currently don't have a quest."
-            );
-            player.quest = nq;
-            this.quest.active = false;
-        }
-
-        if (this.quest.type == "location" && this.quest.active) {
-            if (radar.active) {
-                radar.drawPoint(
-                    radar.getVector(this.quest.location),
-                    "objective"
-                );
+            if (this.quest.complete) {
+                this.quest.active = false;
+                // this.quests.splice(i, 1);
+                player.quest = false;
+                this.quest = false;
+                this.quest.active = false;
             }
-            push();
-            translate(this.quest.location.x, this.quest.location.y);
-            fill(255, 255, 0);
-            ellipse(0, 0, 50);
-            pop();
+
+            if (this.quest.type == "location" && this.quest.active) {
+                if (radar.active) {
+                    radar.drawPoint(
+                        radar.getVector(this.quest.location),
+                        "objective"
+                    );
+                }
+                push();
+                translate(this.quest.location.x, this.quest.location.y);
+                fill(255, 255, 0);
+                ellipse(0, 0, 50);
+                pop();
+            }
         }
     }
 
