@@ -41,14 +41,14 @@ class Planet {
             v = player;
         }
         if (v.pos.dist(this.pos) <= this.triggerDistance) {
+            player.addVisited({
+                x: this.pos.x,
+                y: this.pos.y,
+                name: this.name,
+                type: "planet",
+            });
             if (keyIsDown(32)) {
                 // Add visited
-                player.addVisited({
-                    x: this.pos.x,
-                    y: this.pos.y,
-                    name: this.name,
-                    type: "planet",
-                });
                 if (this.type.id == "gas_planet") {
                     //check for money
                     if (player.money >= core.gameOptions["fuelCost"]) {
